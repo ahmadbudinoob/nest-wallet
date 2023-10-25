@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsString,
   IsDate,
+  IsNumber,
 } from 'class-validator';
 
 export class AccountabilityRequestDto {
@@ -17,11 +18,11 @@ export class AccountabilityRequestDto {
 
   @IsInt()
   @IsOptional()
-  perPage: number;
+  perPage: number = 10;
 
   @IsInt()
   @IsOptional()
-  page: number;
+  page: number = 1;
 
   @IsString()
   sortBy: string;
@@ -29,15 +30,9 @@ export class AccountabilityRequestDto {
   @IsBoolean()
   sortDesc: boolean;
 
-  @IsBoolean()
-  accountability: boolean;
-
   @IsInt()
   @IsOptional()
   user_id: number;
-
-  @IsBoolean()
-  date_filter: boolean;
 
   @IsDate()
   @IsOptional()
@@ -50,4 +45,12 @@ export class AccountabilityRequestDto {
   @IsBoolean()
   @IsOptional()
   date_update: boolean;
+
+  @IsString()
+  @IsOptional()
+  category: string;
+
+  @IsNumber()
+  @IsOptional()
+  status: number;
 }
