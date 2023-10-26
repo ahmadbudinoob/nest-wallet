@@ -1,6 +1,5 @@
-import { ApiTooManyRequestsResponse } from '@nestjs/swagger';
-import { Submission } from 'src/submission/submission.entity';
-import { User } from 'src/user/user.entity';
+import { SubmissionEntity } from 'src/submission/entity/submission.entity';
+import { User } from 'src/user/entity/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -44,9 +43,9 @@ export class AccountabilityEntity {
   @Column({ type: 'bigint', unsigned: true })
   timemodified: number;
 
-  @OneToOne(() => Submission)
+  @OneToOne(() => SubmissionEntity)
   @JoinColumn({ name: 'submission_id', referencedColumnName: 'id' })
-  submission: Submission;
+  submission: SubmissionEntity;
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })

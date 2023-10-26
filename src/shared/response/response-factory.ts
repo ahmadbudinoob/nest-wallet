@@ -1,6 +1,6 @@
 import { HttpStatus } from '@nestjs/common';
 import ApiResponse from './apiresponse';
-import constants from '../../config/constants';
+import constants from '../../utils/constants';
 
 class BaseResponse {
   constructor(

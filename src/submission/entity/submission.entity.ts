@@ -5,10 +5,10 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from '../user/user.entity';
+import { User } from '../../user/entity/user.entity';
 
 @Entity({ name: 'mdl_lw_submission' })
-export class Submission {
+export class SubmissionEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;
 

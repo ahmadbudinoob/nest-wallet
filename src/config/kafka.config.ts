@@ -1,20 +1,8 @@
-import 'dotenv/config';
-import { ClientsModuleOptions, Transport } from '@nestjs/microservices';
-
-const kafkaConfig: ClientsModuleOptions = [
-  {
-    name: 'ILEADS_USER_SERVICE',
-    transport: Transport.KAFKA,
-    options: {
-      client: {
-        clientId: 'ileads-user',
-        brokers: [process.env.KAFKA_URL],
-      },
-      consumer: {
-        groupId: 'ileads-user-consumer',
-      },
-    },
-  },
-];
-
-export { kafkaConfig };
+export const kafkaConfig = {
+  brokers: ['10.253.14.20:9092'],
+  groupId: 'user-wallet-consumer',
+  maxBytesPerPartition: 100000,
+  sessionTimeout: 6000,
+  heartbeatInterval: 2000,
+  fromBeginning: true,
+};

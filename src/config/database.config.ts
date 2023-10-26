@@ -8,7 +8,7 @@ const mysqlConfig: TypeOrmModuleOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  entities: [__dirname + '/entity/*.entity{.ts,.js}'],
   logging: true,
   migrationsRun: false,
   synchronize: false,

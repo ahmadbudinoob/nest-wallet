@@ -2,12 +2,12 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountabilityEntity } from './entity/accountability.entity';
 import { Repository } from 'typeorm';
-import { AccountabilityRequestDto } from './accountability.request.dto';
+import { AccountabilityRequestDto } from './dto/accountability.request.dto';
 import {
   setResponseBadRequest,
   setResponseSuccess,
 } from 'src/shared/response/response-factory';
-import constants from 'src/config/constants';
+import constants from 'src/utils/constants';
 import ApiResponse from 'src/shared/response/apiresponse';
 
 @Injectable()
@@ -43,16 +43,16 @@ export class AccountabilityService {
 
       if (q) {
         queryBuilder.where((qb) => {
-          qb.where('mdl_lw_submission.method LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_lw_submission.name LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_lw_submission.vendor LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_lw_submission.location LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_lw_submission.note LIKE :q', { q: `%${q}%` })
+          qb.where('submission.method LIKE :q', { q: `%${q}%` })
+            .orWhere('submission.name LIKE :q', { q: `%${q}%` })
+            .orWhere('submission.vendor LIKE :q', { q: `%${q}%` })
+            .orWhere('submission.location LIKE :q', { q: `%${q}%` })
+            .orWhere('submission.note LIKE :q', { q: `%${q}%` })
             .orWhere('mdl_lw_accountability.note LIKE :q', { q: `%${q}%` })
             .orWhere('mdl_lw_accountability.sopp LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_users.name LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_users.username LIKE :q', { q: `%${q}%` })
-            .orWhere('mdl_users.email LIKE :q', { q: `%${q}%` })
+            .orWhere('user.name LIKE :q', { q: `%${q}%` })
+            .orWhere('user.username LIKE :q', { q: `%${q}%` })
+            .orWhere('user.email LIKE :q', { q: `%${q}%` })
             .orWhere('mdl_user_unit.description LIKE :q', { q: `%${q}%` })
             .orWhere('mdl_user_kanwil.description LIKE :q', {
               q: `%${q}%`,
@@ -61,7 +61,7 @@ export class AccountabilityService {
             .orWhere('mdl_user_cabang.description LIKE :q', {
               q: `%${q}%`,
             })
-            .orWhere('id LIKE :q', { q: `%${q}%` });
+            .orWhere('mdl_lw_accountability.id LIKE :q', { q: `%${q}%` });
         });
       }
       if (user_id !== undefined) {

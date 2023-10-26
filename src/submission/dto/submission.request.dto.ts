@@ -7,7 +7,7 @@ import {
   IsNumber,
 } from 'class-validator';
 
-export class AccountabilityRequestDto {
+export class SubmissionRequestDto {
   @IsString()
   @IsOptional()
   q: string;
@@ -32,7 +32,7 @@ export class AccountabilityRequestDto {
 
   @IsInt()
   @IsOptional()
-  user_id: number;
+  user_id: string;
 
   @IsDate()
   @IsOptional()
@@ -41,10 +41,6 @@ export class AccountabilityRequestDto {
   @IsDate()
   @IsOptional()
   date_end: Date;
-
-  @IsBoolean()
-  @IsOptional()
-  date_update: boolean;
 
   @IsString()
   @IsOptional()
