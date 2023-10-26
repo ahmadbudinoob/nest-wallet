@@ -27,6 +27,9 @@ export class UserService {
       Logger.log('User updated');
     } else {
       const newUser = new User();
+      newUser.name = message.name;
+      newUser.auth = 'sso';
+      newUser.username = message.username;
       newUser.grade = message.grade;
       newUser.position = message.position;
       newUser.email = message.email;
@@ -35,6 +38,7 @@ export class UserService {
       newUser.unit_id = message.unitKerjaId;
       newUser.avatar = message.avatar;
       newUser.status = message.active;
+      newUser.position = message.kodeJabatan;
       await this.userRepository.save(newUser);
       Logger.log('User created');
     }
