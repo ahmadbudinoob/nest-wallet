@@ -1,12 +1,14 @@
-import { Controller, Logger } from '@nestjs/common';
+import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-
+import { KafkaConsumerService } from './kafka.consumer.service';
 @Controller()
 export class KafkaController {
+  constructor(
+    @Inject(KafkaConsumerService)
+    private readonly kafkaConsumerService: KafkaConsumerService,
+  ) {}
   @MessagePattern('support.ileads.user.save')
   async getDataKafka(@Payload() message) {
-    Logger.log('retrieveUserData function called');
-    Logger.log(message);
-    return 0;
+    return await this.kafkaConsumerService.retrieveUserData(message);
   }
 }
